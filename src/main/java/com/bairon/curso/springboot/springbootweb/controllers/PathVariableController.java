@@ -5,6 +5,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import com.bairon.curso.springboot.springbootweb.model.dto.ParamDtoModel;
 
 
@@ -22,6 +25,17 @@ public class PathVariableController {
         dtoModel.setSaludo(saludo);
 
         return dtoModel;
+    }
+
+    @GetMapping("mix/{id}/{product}")
+    public Map<String,Object> mixpathvar(@PathVariable String product, @PathVariable Long id){
+
+        Map<String, Object> json = new HashMap<>();
+
+        json.put("product", product);
+        json.put("id", id);
+
+        return json;
     }
 
 }
