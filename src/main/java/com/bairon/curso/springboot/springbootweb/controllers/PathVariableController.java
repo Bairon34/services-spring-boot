@@ -1,6 +1,8 @@
 package com.bairon.curso.springboot.springbootweb.controllers;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.core.env.Environment;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -40,6 +42,9 @@ public class PathVariableController {
 
     @Value("#{${config.valuesMap}.price}")
     private String productPrice;
+
+    @Autowired
+    private Environment envirotment;
 
     @GetMapping("/baz/{message}/{code}/{saludo}")
     public ParamDtoModel baz(@PathVariable String message,@PathVariable Integer code, @PathVariable String saludo){
@@ -83,6 +88,7 @@ public class PathVariableController {
         json.put("valuesMap", valuesMap);
         json.put("produtName", productName);
         json.put("productPrice", productPrice);
+        json.put("environment", envirotment.getProperty("config.message"));
 
         return  json;
     }
