@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import com.bairon.curso.springboot.springbootweb.model.UserModel;
@@ -27,6 +28,18 @@ public class PathVariableController {
     private String [] listOfValues;
     @Value("${config.code}")
     private Integer code;
+
+    @Value("#{'${config.listOfValues}'.split(',')}")
+    private List<String> valueList;
+
+    @Value("#{${config.valuesMap}}")
+    private Map<String,Object> valuesMap;
+
+    @Value("#{${config.valuesMap}.product}")
+    private String productName;
+
+    @Value("#{${config.valuesMap}.price}")
+    private String productPrice;
 
     @GetMapping("/baz/{message}/{code}/{saludo}")
     public ParamDtoModel baz(@PathVariable String message,@PathVariable Integer code, @PathVariable String saludo){
@@ -66,6 +79,10 @@ public class PathVariableController {
         json.put("code", code);
         json.put("message", message);
         json.put("lista", listOfValues);
+        json.put("listOfValues", valueList);
+        json.put("valuesMap", valuesMap);
+        json.put("produtName", productName);
+        json.put("productPrice", productPrice);
 
         return  json;
     }
