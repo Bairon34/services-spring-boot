@@ -2,6 +2,7 @@ package com.bairon.curso.springboot.springbootweb.controllers;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 
@@ -20,6 +21,11 @@ public class UserController {
         return "detail";
     }
 
+    @GetMapping("/list")
+    public String list(ModelMap model){
+        model.addAttribute("title","listado de usarios");
+        return list(model);
+    }
 
     @ModelAttribute("users")
     private List<UserModel> userModel(){
