@@ -89,6 +89,7 @@ public class PathVariableController {
         json.put("produtName", productName);
         json.put("productPrice", productPrice);
         json.put("environment", envirotment.getProperty("config.message"));
+        json.put("code2", envirotment.getProperty("config.code",Long.class));
 
         return  json;
     }
