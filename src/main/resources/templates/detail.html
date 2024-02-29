@@ -9,4 +9,9 @@
     <h1 th:text="${name}"></h1>
     <h1 th:text="${lastname}"></h1>
     <h1 th:text="${email}"></h1>
+
+    <a th:href="@{/list}">Ver listado</a>
+    <a th:href="@{'/api/params/foo?message=' + ${title}}">Ver mensaje</a>
+    <a th:href="@{'/api/params/foo(message='hola mundo')}">Ver mensaje concatenado</a>
+</body>
 </html>
