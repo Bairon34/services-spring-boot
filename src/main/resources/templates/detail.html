@@ -13,6 +13,6 @@
     <a th:href="@{/list}">Ver listado</a>
     <a th:href="@{'/api/params/foo?message=' + ${title}}">Ver mensaje</a>
     <a th:href="@{/api/params/foo(message='hola mundo')}">Ver mensaje concatenado</a>
-    <a th:href="@{/api/params/bar(text='hola mundo',code=2323)}">Ver mensaje concatenado 3</a>
+    <a th:href="@{/api/params/bar(text=${lastname},code=2323)}">Ver mensaje concatenado 3</a>
 </body>
 </html>
